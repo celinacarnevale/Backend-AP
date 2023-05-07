@@ -20,7 +20,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("explab")
+@RequestMapping("/explab")
 
 @CrossOrigin(origins = "http://localhost:4200")
 
@@ -35,7 +35,7 @@ public class CExperiencia {
     }
     
     @GetMapping("/detail/{id}")
-    public ResponseEntity<Experiencia> getById(@PathVariable("id") int id){
+    public ResponseEntity<Experiencia> getById(@PathVariable("id")int id){
         if(!sExperiencia.existsById(id))
             return new ResponseEntity(new Mensaje("no existe"), HttpStatus.NOT_FOUND);
         Experiencia experiencia = sExperiencia.getOne(id).get();
@@ -73,7 +73,7 @@ public class CExperiencia {
     }
     
     @DeleteMapping("/delete/{id}")
-    public ResponseEntity<?> delete(@PathVariable("id") int id){
+    public ResponseEntity<?> delete(@PathVariable("id")int id){
         if(!sExperiencia.existsById(id))
             return new ResponseEntity(new Mensaje("El id no existe"), HttpStatus.NOT_FOUND);
         sExperiencia.delete(id);
