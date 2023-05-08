@@ -1,4 +1,3 @@
-
 package com.portfolio.celinavillarroel.Controller;
 
 import com.portfolio.celinavillarroel.Dto.dtoEducacion;
@@ -56,12 +55,12 @@ public class CEducacion {
     
     @PostMapping("/create")
     public ResponseEntity<?> create(@RequestBody dtoEducacion dtoeducacion){
-        if(StringUtils.isBlank(dtoeducacion.getNombreEdu())){
+        if(StringUtils.isBlank(dtoeducacion.getNombreEdu()))
             return new ResponseEntity(new Mensaje("El nombre no puede estar en blanco"), HttpStatus.BAD_REQUEST);
-        }
-        if(sEducacion.existsByNombreEdu(dtoeducacion.getNombreEdu())){
+        
+        if(sEducacion.existsByNombreEdu(dtoeducacion.getNombreEdu()))
             return new ResponseEntity(new Mensaje("Ese nombre ya existe"), HttpStatus.BAD_REQUEST);
-        }
+        
         
         Educacion educacion = new Educacion(dtoeducacion.getNombreEdu(), dtoeducacion.getDescripcionEdu());
         sEducacion.save(educacion);
